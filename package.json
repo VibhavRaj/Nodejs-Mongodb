@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/VibhavRaj/Nodejs-Mongodb/issues"
   },
-  "homepage": "https://github.com/VibhavRaj/Nodejs-Mongodb#readme"
+  "homepage": "https://github.com/VibhavRaj/Nodejs-Mongodb#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
