@@ -1,10 +1,14 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const bodyParser = require("body-parser");
 // Api imported
 const alllist = require("./api/routes/list");
 
 app.use(morgan("dev"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // Routes which handles the request
 app.use("/list", alllist);
 
