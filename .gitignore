@@ -3,3 +3,6 @@ node_modules
 
 # ignore notes.txt
 *.txt
+
+# ignore Api request
+*.http
