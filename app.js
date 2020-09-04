@@ -1,10 +1,11 @@
 const express = require("express");
+const connectDB = require("./api/connection/mongodb");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-// Api imported
-const alllist = require("./api/routes/list");
 
+//MongoDB Connection
+connectDB();
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -14,17 +15,14 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin,X-Requested-With,Cotent-Type,Accept,Authorization"
+    "Origin,X-Requested-With,Content-Type,Accept,Authorization"
   );
   if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT,POST,PATCH,DELETE,GET");
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
     return res.status(200).json({});
   }
   next();
 });
-
-// Routes which handles the request
-app.use("/list", alllist);
 
 // Error Handling
 app.use((req, res, next) => {
